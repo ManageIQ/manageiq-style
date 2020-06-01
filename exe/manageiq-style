@@ -76,4 +76,13 @@ if opts[:install]
   }
 
   File.write(".codeclimate.yml", data.to_yaml)
+
+  # Copy configs to generator
+  plugin_directory = "lib/generators/manageiq/plugin/templates"
+  if File.directory?(plugin_directory)
+    require 'fileutils'
+    [".codeclimate.yml", ".rubocop.yml", ".rubocop_cc.yml"].each { |source| FileUtils.cp(source, File.join(plugin_directory, source)) }
+    rubocop_local = File.join(plugin_directory, ".rubocop_local.yml")
+    File.write(rubocop_local, "\n") unless File.exists?(rubocop_local)
+  end
 end
