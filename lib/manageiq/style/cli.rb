@@ -37,7 +37,7 @@ module Manageiq
         write_rubocop_cc_yml
         ensure_rubocop_local_yml_exists
         update_codeclimate_yml
-        copy_remaining_configs
+        update_generator
       end
 
       private
@@ -108,8 +108,7 @@ module Manageiq
         File.write(".codeclimate.yml", data.to_yaml)
       end
 
-      # Copy configs to generator
-      def copy_remaining_configs
+      def update_generator
         require 'fileutils'
         plugin_dir = "lib/generators/manageiq/plugin/templates"
 
