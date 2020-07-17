@@ -55,9 +55,9 @@ module Manageiq
         end
       end
 
-      def update_rubocop_yml
+      def update_rubocop_yml(file = ".rubocop.yml")
         data = begin
-          YAML.load_file(".rubocop.yml")
+          YAML.load_file(file)
         rescue Errno::ENOENT
           {}
         end
@@ -65,26 +65,28 @@ module Manageiq
         data.store_path("inherit_gem", "manageiq-style", ".rubocop_base.yml")
         data["inherit_from"] = [".rubocop_local.yml"]
 
-        File.write(".rubocop.yml", data.to_yaml)
+        File.write(".rubocop.yml", data.to_yaml.sub("---\n", ""))
       end
 
-      def write_rubocop_cc_yml
-        File.write(".rubocop_cc.yml", {
+      def write_rubocop_cc_yml(file = ".rubocop_cc.yml")
+        data = {
           "inherit_from" => [
             ".rubocop_base.yml",
             ".rubocop_cc_base.yml",
             ".rubocop_local.yml"
           ]
-        }.to_yaml)
+        }
+
+        File.write(file, data.to_yaml.sub("---\n", ""))
       end
 
-      def ensure_rubocop_local_yml_exists
-        File.write(".rubocop_local.yml", "\n") unless File.exists?(".rubocop_local.yml")
+      def ensure_rubocop_local_yml_exists(file = ".rubocop_local.yml")
+        File.write(file, "\n") unless File.exists?(file)
       end
 
-      def update_codeclimate_yml
+      def update_codeclimate_yml(file = ".codeclimate.yml")
         data = begin
-          YAML.load_file(".codeclimate.yml")
+          YAML.load_file(file)
         rescue Errno::ENOENT
           {}
         end
@@ -105,20 +107,18 @@ module Manageiq
           "channel" => cc_rubocop_channel,
         }
 
-        File.write(".codeclimate.yml", data.to_yaml)
+        File.write(".codeclimate.yml", data.to_yaml.sub("---\n", ""))
       end
 
       def update_generator
-        require 'fileutils'
         plugin_dir = "lib/generators/manageiq/plugin/templates"
 
         return unless File.directory?(plugin_dir)
 
-        [".codeclimate.yml", ".rubocop.yml", ".rubocop_cc.yml"].each do |source|
-          FileUtils.cp(source, File.join(plugin_dir, source))
-        end
-
-        File.write(File.join(plugin_dir, ".rubocop_local.yml"), "\n")
+        update_rubocop_yml(File.join(plugin_dir, ".rubocop.yml"))
+        write_rubocop_cc_yml(File.join(plugin_dir, ".rubocop_cc.yml"))
+        ensure_rubocop_local_yml_exists(File.join(plugin_dir, ".rubocop_local.yml"))
+        update_codeclimate_yml(File.join(plugin_dir, ".codeclimate.yml"))
       end
 
       def cc_rubocop_channel
