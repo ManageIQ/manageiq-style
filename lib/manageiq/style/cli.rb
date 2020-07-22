@@ -81,7 +81,8 @@ module Manageiq
       end
 
       def ensure_rubocop_local_yml_exists(file = ".rubocop_local.yml")
-        File.write(file, "\n") unless File.exists?(file)
+        require 'fileutils'
+        FileUtils.touch(file)
       end
 
       def update_codeclimate_yml(file = ".codeclimate.yml")
