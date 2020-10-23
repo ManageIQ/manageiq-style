@@ -212,6 +212,10 @@ Style/MethodCallWithArgsParentheses:
     - uuid
     - validate
     - validates
+    # RSpec
+    - to
+    - to_not
+    - not_to
     # ActsAsTree Gem
     - acts_as_tree
     # Ancestry Gem
