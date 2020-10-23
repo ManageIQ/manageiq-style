@@ -2,12 +2,11 @@ require_relative 'lib/manageiq/style/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "manageiq-style"
-  spec.version       = Manageiq::Style::VERSION
-  spec.authors       = ["Brandon Dunne"]
-  spec.email         = ["brandondunne@hotmail.com"]
+  spec.version       = ManageIQ::Style::VERSION
+  spec.authors       = ["ManageIQ Authors"]
 
   spec.summary       = "Style and linting configuration for ManageIQ projects."
-  spec.description   = "Style and linting configuration for ManageIQ projects."
+  spec.description   = spec.summary
   spec.homepage      = "https://github.com/ManageIQ/manageiq-style"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
@@ -29,4 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "rubocop",   "~> 0.82.0"
   spec.add_runtime_dependency "rubocop-performance"
   spec.add_runtime_dependency "rubocop-rails"
+
+  spec.add_development_dependency "rake",  "~> 12.0"
+  spec.add_development_dependency "rspec", "~> 3.0"
 end

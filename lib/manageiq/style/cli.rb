@@ -1,6 +1,4 @@
-require "manageiq/style"
-
-module Manageiq
+module ManageIQ
   module Style
     class CLI
       def self.run
@@ -15,16 +13,15 @@ module Manageiq
         require 'optimist'
 
         Optimist.options do
-          usage    "manageiq-version [OPTIONS]"
-          synopsis "The ManageIQ communities style configuration utility"
-          version  "v#{Manageiq::Style::VERSION}\n"
+          usage    "[OPTIONS]"
+          synopsis "\nThe ManageIQ community's style configuration utility."
+          version  "v#{ManageIQ::Style::VERSION}\n"
 
-          opt :install, "Install or update the style configurations", :default => false
+          opt :install, "Install or update the style configurations", :default => false, :required => true
         end
       end
 
       def run
-        version if @opts[:version]
         install if @opts[:install]
       end
 

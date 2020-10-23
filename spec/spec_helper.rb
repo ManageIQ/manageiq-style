@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "manageiq/style"
+require "manageiq-style"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
