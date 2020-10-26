@@ -3,6 +3,6 @@
 $LOAD_PATH << File.expand_path("../lib", __dir__)
 
 require 'bundler/setup'
-require 'manageiq/style/cli'
+require 'manageiq-style'
 
-Manageiq::Style::CLI.run
+ManageIQ::Style::CLI.run
