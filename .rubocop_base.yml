@@ -5,8 +5,8 @@ require:
 AllCops:
   NewCops: disable
   Exclude:
-    - spec/manageiq/**/*
-    - vendor/**/*
+    - 'spec/manageiq/**/*'
+    - 'vendor/**/*'
   TargetRubyVersion: 2.5
 Layout/HashAlignment:
   EnforcedHashRocketStyle: table
