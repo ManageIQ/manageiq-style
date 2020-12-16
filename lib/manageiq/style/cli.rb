@@ -92,7 +92,9 @@ module ManageIQ
         data["prepare"] = {
           "fetch" => [
             {"url" => "https://raw.githubusercontent.com/ManageIQ/manageiq-style/master/.rubocop_base.yml",    "path" => ".rubocop_base.yml"},
-            {"url" => "https://raw.githubusercontent.com/ManageIQ/manageiq-style/master/.rubocop_cc_base.yml", "path" => ".rubocop_cc_base.yml"}
+            {"url" => "https://raw.githubusercontent.com/ManageIQ/manageiq-style/master/.rubocop_cc_base.yml", "path" => ".rubocop_cc_base.yml"},
+            {"url" => "https://raw.githubusercontent.com/ManageIQ/manageiq-style/master/styles/base.yml",      "path" => "styles/base.yml"},
+            {"url" => "https://raw.githubusercontent.com/ManageIQ/manageiq-style/master/styles/cc_base.yml",   "path" => "styles/cc_base.yml"},
           ]
         }
 
@@ -104,6 +106,17 @@ module ManageIQ
           "config"  => ".rubocop_cc.yml",
           "channel" => cc_rubocop_channel,
         }
+        data["engines"]&.each do |engine, config|
+          data["plugins"][engine] = config
+        end
+
+        data.delete("engines") # moved to plugins
+        data.delete("ratings") # deprecated
+
+        exclude_paths = data.delete("exclude_paths") # renamed
+        data["exclude_patterns"] = exclude_paths if exclude_paths
+
+        data["version"] ||= "2"
 
         File.write(".codeclimate.yml", data.to_yaml.sub("---\n", ""))
       end
