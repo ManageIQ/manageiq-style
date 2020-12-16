@@ -92,7 +92,9 @@ module ManageIQ
         data["prepare"] = {
           "fetch" => [
             {"url" => "https://raw.githubusercontent.com/ManageIQ/manageiq-style/master/.rubocop_base.yml",    "path" => ".rubocop_base.yml"},
-            {"url" => "https://raw.githubusercontent.com/ManageIQ/manageiq-style/master/.rubocop_cc_base.yml", "path" => ".rubocop_cc_base.yml"}
+            {"url" => "https://raw.githubusercontent.com/ManageIQ/manageiq-style/master/.rubocop_cc_base.yml", "path" => ".rubocop_cc_base.yml"},
+            {"url" => "https://raw.githubusercontent.com/ManageIQ/manageiq-style/master/styles/base.yml",      "path" => "styles/base.yml"},
+            {"url" => "https://raw.githubusercontent.com/ManageIQ/manageiq-style/master/styles/cc_base.yml",   "path" => "styles/cc_base.yml"},
           ]
         }
 
