@@ -27,6 +27,8 @@ Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 Lint/RaiseException:
   Enabled: true
+Lint/RescueException:
+  Enabled: false
 Lint/StructNewOverride:
   Enabled: true
 Metrics/AbcSize:
