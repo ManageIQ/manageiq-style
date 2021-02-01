@@ -17,6 +17,8 @@ Layout/EndAlignment:
   AutoCorrect: true
 Layout/ExtraSpacing:
   AutoCorrect: true
+  Exclude:
+    - Gemfile
 Layout/LineLength:
   Enabled: false
 Layout/SpaceAroundMethodCallOperator:
