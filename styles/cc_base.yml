@@ -23,6 +23,8 @@ Security:
   Enabled: true
 Style:
   Enabled: false
+Layout/LineLength:
+  Enabled: false
 Metrics/AbcSize:
   Enabled: false
 Metrics/BlockLength:
@@ -34,8 +36,6 @@ Metrics/ClassLength:
 Metrics/CyclomaticComplexity:
   Enabled: true
   Max: 11
-Metrics/LineLength:
-  Enabled: false
 Metrics/MethodLength:
   Enabled: false
 Metrics/ModuleLength:
