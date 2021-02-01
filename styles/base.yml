@@ -248,6 +248,8 @@ Style/MethodCallWithArgsParentheses:
     # Rake
     - desc
     - task
+Style/NegatedIf:
+  Enabled: false
 Style/NumericLiterals:
   AutoCorrect: false
 Style/NumericPredicate:
