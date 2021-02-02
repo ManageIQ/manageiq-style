@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "rubocop",   "~> 0.82.0"
   spec.add_runtime_dependency "rubocop-performance"
   spec.add_runtime_dependency "rubocop-rails"
+  spec.add_runtime_dependency "rugged"
 
   spec.add_development_dependency "rake",  "~> 12.0"
   spec.add_development_dependency "rspec", "~> 3.0"
