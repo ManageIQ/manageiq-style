@@ -253,6 +253,8 @@ Style/MethodCallWithArgsParentheses:
     - task
 Style/NegatedIf:
   Enabled: false
+Style/NegatedIfElseCondition:
+  Enabled: false
 Style/NumericLiterals:
   AutoCorrect: false
 Style/NumericPredicate:
