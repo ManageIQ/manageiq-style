@@ -3,7 +3,7 @@ require:
   - rubocop-performance
 
 AllCops:
-  NewCops: disable
+  NewCops: enable
   Exclude:
     - spec/manageiq/**/*
     - vendor/**/*
