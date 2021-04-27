@@ -3,11 +3,12 @@ require:
   - rubocop-performance
 
 AllCops:
-  NewCops: disable
+  NewCops: enable
   Exclude:
     - spec/manageiq/**/*
     - vendor/**/*
-  TargetRubyVersion: 2.5
+  SuggestExtensions: false
+  TargetRubyVersion: 2.6
 Layout/HashAlignment:
   EnforcedHashRocketStyle: table
   EnforcedColonStyle: table
@@ -251,6 +252,8 @@ Style/MethodCallWithArgsParentheses:
     - desc
     - task
 Style/NegatedIf:
+  Enabled: false
+Style/NegatedIfElseCondition:
   Enabled: false
 Style/NumericLiterals:
   AutoCorrect: false
