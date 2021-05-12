@@ -17,12 +17,16 @@ module ManageIQ
           synopsis "\nThe ManageIQ community's style configuration utility."
           version  "v#{ManageIQ::Style::VERSION}\n"
 
-          opt :install, "Install or update the style configurations", :default => false, :required => true
+          opt :format,  "TODO:  How to format the linter output",     :default => "emacs"
+          opt :install, "Install or update the style configurations", :default => false
+          opt :lint,    "Run linters for current changes",            :default => false
+          opt :linters, "Linters to run for current changes",         :default => ["rubocop"]
         end
       end
 
       def run
         install if @opts[:install]
+        lint    if @opts[:lint]
       end
 
       def install
@@ -36,6 +40,20 @@ module ManageIQ
         update_codeclimate_yml
         update_generator
         update_gem_source
+      end
+
+      def lint
+        require 'more_core_extensions/all'
+
+        require 'manageiq/style/git_service/branch'
+        require 'manageiq/style/git_service/diff'
+
+        require 'manageiq/style/linter/base'
+        require 'manageiq/style/linter/haml'
+        require 'manageiq/style/linter/rubocop'
+        require 'manageiq/style/linter/yaml'
+
+        Linter::Rubocop.new(ARGV).run
       end
 
       private
