@@ -233,7 +233,7 @@ module ManageIQ
       end
 
       def cc_rubocop_channel
-        @cc_rubocop_channel ||= "rubocop-#{rubocop_version.segments[0]}-#{rubocop_version.segments[1]}"
+        @cc_rubocop_channel ||= "rubocop-#{rubocop_version.segments[0]}-#{rubocop_version.segments[1]}-#{rubocop_version.segments[2]}"
       end
 
       def rubocop_version
