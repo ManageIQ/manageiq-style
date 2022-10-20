@@ -266,6 +266,8 @@ Style/PerlBackrefs:
   Enabled: false
 Style/ParallelAssignment:
   Enabled: false
+Style/QuotedSymbols:
+  Enabled: false # disabled because Style/StringLiterals is disabled
 Style/RedundantReturn:
   AllowMultipleReturnValues: true
 Style/RegexpLiteral:
@@ -283,7 +285,7 @@ Style/SingleLineMethods:
 Style/SpecialGlobalVars:
   AutoCorrect: false
 Style/StringLiterals:
-  Enabled: false
+  Enabled: false # Also see Style/QuotedSymbols
 Style/StringLiteralsInInterpolation:
   Enabled: false
 Style/SymbolArray:
