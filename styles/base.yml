@@ -120,7 +120,7 @@ Style/MethodCallWithArgsParentheses:
     - lib/tasks/**/*
     - spec/**/*
   Enabled: true
-  IgnoredMethods:
+  AllowedMethods:
     # Ruby
     - add_dependency
     - add_development_dependency
