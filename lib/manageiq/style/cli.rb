@@ -41,16 +41,14 @@ module ManageIQ
       private
 
       def check_for_codeclimate_channel
-        begin
-          require 'open-uri'
-          URI::HTTPS.build(
-            :host => "raw.githubusercontent.com",
-            :path => File.join("/codeclimate", "codeclimate-rubocop", "channel", cc_rubocop_channel, "Gemfile")
-          ).open
-        rescue OpenURI::HTTPError
-          puts "RuboCop version #{rubocop_version.version} is not supported by CodeClimate."
-          exit 1
-        end
+        require 'open-uri'
+        URI::HTTPS.build(
+          :host => "raw.githubusercontent.com",
+          :path => File.join("/codeclimate", "codeclimate-rubocop", "channel", cc_rubocop_channel, "Gemfile")
+        ).open
+      rescue OpenURI::HTTPError
+        puts "RuboCop version #{rubocop_version.version} is not supported by CodeClimate."
+        exit 1
       end
 
       def update_rubocop_yml(file = ".rubocop.yml")
@@ -213,7 +211,7 @@ module ManageIQ
         indent = lines.first.match(/^\s+/).to_s
 
         lines.map! { |l| l.strip.gsub(/[()]/, " ").split(" ", 3) }             # Split to [prefix, gem, versions]
-        lines.each { |parts| parts[1].tr!("'", "\"")}                          # Ensure double quoted gem name
+        lines.each { |parts| parts[1].tr!("'", "\"") }                         # Ensure double quoted gem name
         max_width = lines.map { |parts| parts[1].size }.max                    # Determine the widest gem name
         lines.each { |parts| parts[1] = parts[1].ljust(max_width, " ") }       # Apply the width
         lines.map! { |parts| parts.join(" ").strip.insert(0, indent) << "\n" } # Back to strings
