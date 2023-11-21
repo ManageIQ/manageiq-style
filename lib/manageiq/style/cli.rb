@@ -42,13 +42,27 @@ module ManageIQ
 
       def check_for_codeclimate_channel
         require 'open-uri'
-        URI::HTTPS.build(
-          :host => "raw.githubusercontent.com",
-          :path => File.join("/codeclimate", "codeclimate-rubocop", "channel", cc_rubocop_channel, "Gemfile")
-        ).open
+        uri = URI.parse("https://raw.githubusercontent.com/codeclimate/codeclimate-rubocop/channel/#{cc_rubocop_channel}/Gemfile")
+        uri.open
       rescue OpenURI::HTTPError
-        puts "RuboCop version #{rubocop_version.version} is not supported by CodeClimate."
+        STDERR.puts "RuboCop version #{rubocop_version.version} is not supported by CodeClimate."
+        STDERR.puts
+        STDERR.puts "Accepted versions are:"
+        fetch_all_codeclimate_channels.each_slice(10) do |versions|
+          STDERR.puts "    #{versions.join(", ")}"
+        end
         exit 1
+      end
+
+      def fetch_all_codeclimate_channels
+        `git ls-remote --heads https://github.com/codeclimate/codeclimate-rubocop 'channel/rubocop-*' 2>/dev/null`
+          .lines
+          .flat_map { |l| l.match(/rubocop-(.+)$/).captures }
+          .map { |v| v.split("-").join(".") }
+          .reject { |v| v == "1.70" } # This is not a real version, but the branch exists :shrug:
+          .sort_by { |v| v.split(".").map(&:to_i) }
+      rescue
+        []
       end
 
       def update_rubocop_yml(file = ".rubocop.yml")
