@@ -1,3 +1,5 @@
+require 'fileutils'
+
 module ManageIQ
   module Style
     class CLI
@@ -30,10 +32,14 @@ module ManageIQ
         require 'more_core_extensions/all'
 
         check_for_codeclimate_channel
+
         update_rubocop_yml
         write_rubocop_cc_yml
         ensure_rubocop_local_yml_exists
         update_codeclimate_yml
+        ensure_haml_lint_yml
+        update_yamllint
+
         update_generator
         update_gem_source
       end
@@ -42,13 +48,27 @@ module ManageIQ
 
       def check_for_codeclimate_channel
         require 'open-uri'
-        URI::HTTPS.build(
-          :host => "raw.githubusercontent.com",
-          :path => File.join("/codeclimate", "codeclimate-rubocop", "channel", cc_rubocop_channel, "Gemfile")
-        ).open
+        uri = URI.parse("https://raw.githubusercontent.com/codeclimate/codeclimate-rubocop/channel/#{cc_rubocop_channel}/Gemfile")
+        uri.open
       rescue OpenURI::HTTPError
-        puts "RuboCop version #{rubocop_version.version} is not supported by CodeClimate."
+        STDERR.puts "RuboCop version #{rubocop_version.version} is not supported by CodeClimate."
+        STDERR.puts
+        STDERR.puts "Accepted versions are:"
+        fetch_all_codeclimate_channels.each_slice(10) do |versions|
+          STDERR.puts "    #{versions.join(", ")}"
+        end
         exit 1
+      end
+
+      def fetch_all_codeclimate_channels
+        `git ls-remote --heads https://github.com/codeclimate/codeclimate-rubocop 'channel/rubocop-*' 2>/dev/null`
+          .lines
+          .flat_map { |l| l.match(/rubocop-(.+)$/).captures }
+          .map { |v| v.split("-").join(".") }
+          .reject { |v| v == "1.70" } # This is not a real version, but the branch exists :shrug:
+          .sort_by { |v| v.split(".").map(&:to_i) }
+      rescue
+        []
       end
 
       def update_rubocop_yml(file = ".rubocop.yml")
@@ -61,7 +81,7 @@ module ManageIQ
         data.store_path("inherit_gem", "manageiq-style", ".rubocop_base.yml")
         data["inherit_from"] = [".rubocop_local.yml"]
 
-        File.write(".rubocop.yml", data.to_yaml.sub("---\n", ""))
+        File.write(file, data.to_yaml.sub("---\n", ""))
       end
 
       def write_rubocop_cc_yml(file = ".rubocop_cc.yml")
@@ -77,7 +97,6 @@ module ManageIQ
       end
 
       def ensure_rubocop_local_yml_exists(file = ".rubocop_local.yml")
-        require 'fileutils'
         FileUtils.touch(file)
       end
 
@@ -117,7 +136,33 @@ module ManageIQ
 
         data["version"] ||= "2"
 
-        File.write(".codeclimate.yml", data.to_yaml.sub("---\n", ""))
+        File.write(file, data.to_yaml.sub("---\n", ""))
+      end
+
+      def ensure_haml_lint_yml(file = ".haml-lint.yml")
+        return if File.exist?(file)
+
+        FileUtils.ln_s(".rubocop.yml", file)
+      end
+
+      def update_yamllint(file = ".yamllint")
+        data = begin
+          YAML.load_file(file)
+        rescue Errno::ENOENT
+          {}
+        end
+
+        data["ignore"] ||= ""
+        data["ignore"] << "/locale/**\n" unless data["ignore"].include?("/locale/**")
+        data["ignore"] << "/vendor/**\n" unless data["ignore"].include?("/vendor/**")
+        data["ignore"].chomp!
+
+        data["extends"] = "relaxed"
+
+        data.store_path("rules", "indentation", "indent-sequences", false)
+        data.store_path("rules", "line-length", "max", 1000)
+
+        File.write(file, data.to_yaml.sub("---\n", ""))
       end
 
       def update_gem_source
