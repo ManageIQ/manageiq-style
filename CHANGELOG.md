@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.5.0] - 2024-02-28
+### Changed
+- Change TargetRubyVersion to 3.0 [[#42](https://github.com/ManageIQ/manageiq-style/pull/42)]
+- Drop Ruby 2.7 [[#43](https://github.com/ManageIQ/manageiq-style/pull/43)]
 ## [1.4.0] - 2023-11-22
 ### Added
 - Ensure .haml-lint.yml and .yamllint files [[#39](https://github.com/ManageIQ/manageiq-style/pull/39)]
@@ -25,7 +29,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.1] - 2020-06-19
 ## [1.0.0] - 2020-05-19
 
-[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/ManageIQ/manageiq-style/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/ManageIQ/manageiq-style/compare/v1.3.3...v1.4.0
 [1.3.3]: https://github.com/ManageIQ/manageiq-style/compare/v1.3.2...v1.3.3
 [1.3.2]: https://github.com/ManageIQ/manageiq-style/compare/v1.3.1...v1.3.2
