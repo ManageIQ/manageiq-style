@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.5.2] - 2024-03-29
+### Changed
+- Revert "Drop Ruby 2.7" [[#49](https://github.com/ManageIQ/manageiq-style/pull/49)]
+
 ## [1.5.1] - 2024-03-29
 ### Changed
 - Change Gemspec cop rules for Gemspec/DevelopmentDependencies and Gemspec/RequiredRubyVersion [[#45](https://github.com/ManageIQ/manageiq-style/pull/45)]
@@ -34,7 +38,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.1] - 2020-06-19
 ## [1.0.0] - 2020-05-19
 
-[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.1...HEAD
+[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.2...HEAD
+[1.5.2]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/ManageIQ/manageiq-style/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/ManageIQ/manageiq-style/compare/v1.3.3...v1.4.0
