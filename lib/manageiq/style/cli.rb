@@ -7,8 +7,16 @@ module ManageIQ
         new.run
       end
 
+      OPTION_DEFAULTS = {
+        :install     => false,
+        :rubocop     => true,
+        :codeclimate => true,
+        :yamllint    => true,
+        :hamllint    => true
+      }.freeze
+
       def initialize(options = parse_cli_options)
-        @opts = options
+        @opts = OPTION_DEFAULTS.merge(options)
       end
 
       def parse_cli_options
@@ -20,6 +28,11 @@ module ManageIQ
           version  "v#{ManageIQ::Style::VERSION}\n"
 
           opt :install, "Install or update the style configurations", :default => false, :required => true
+
+          opt :rubocop,      "Include .rubocop.yml and friends", :default => true
+          opt :codeclimate,  "Include .codeclimate.yml",         :default => true
+          opt :yamllint,     "Include .yamllint",                :default => true
+          opt :hamllint,     "Include .hamllint",                :default => true
         end
       end
 
@@ -47,6 +60,8 @@ module ManageIQ
       private
 
       def check_for_codeclimate_channel
+        return unless @opts[:codeclimate]
+
         require 'open-uri'
         uri = URI.parse("https://raw.githubusercontent.com/codeclimate/codeclimate-rubocop/channel/#{cc_rubocop_channel}/Gemfile")
         uri.open
@@ -72,6 +87,8 @@ module ManageIQ
       end
 
       def update_rubocop_yml(file = ".rubocop.yml")
+        return unless @opts[:rubocop]
+
         data = begin
           YAML.load_file(file)
         rescue Errno::ENOENT
@@ -85,6 +102,8 @@ module ManageIQ
       end
 
       def write_rubocop_cc_yml(file = ".rubocop_cc.yml")
+        return unless @opts[:rubocop]
+
         data = {
           "inherit_from" => [
             ".rubocop_base.yml",
@@ -97,10 +116,14 @@ module ManageIQ
       end
 
       def ensure_rubocop_local_yml_exists(file = ".rubocop_local.yml")
+        return unless @opts[:rubocop]
+
         FileUtils.touch(file)
       end
 
       def update_codeclimate_yml(file = ".codeclimate.yml")
+        return unless @opts[:codeclimate]
+
         data = begin
           YAML.load_file(file)
         rescue Errno::ENOENT
@@ -140,12 +163,15 @@ module ManageIQ
       end
 
       def ensure_haml_lint_yml(file = ".haml-lint.yml")
+        return unless @opts[:hamllint]
         return if File.exist?(file)
 
         FileUtils.ln_s(".rubocop.yml", file)
       end
 
       def update_yamllint(file = ".yamllint")
+        return unless @opts[:yamllint]
+
         data = begin
           YAML.load_file(file)
         rescue Errno::ENOENT
