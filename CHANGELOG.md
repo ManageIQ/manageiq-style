@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [1.5.3] - 2025-01-10
+## [1.5.3] - 2025-01-09
 ### Changed
 - Bump Rexml minimum version for CVE-2024-49761 [[#57](https://github.com/ManageIQ/manageiq-style/pull/57)]
 
