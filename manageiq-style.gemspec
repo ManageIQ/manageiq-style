@@ -28,6 +28,11 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "rubocop", "= 1.56.3"
   spec.add_runtime_dependency "rubocop-performance"
   spec.add_runtime_dependency "rubocop-rails"
+  # style depends upon rubocop
+  # rubocop depends upon rexml.
+  #   minimum rexml version is here for CVE-2024-49761
+  #   remove after upgrading rubocop. (newer versions no longer depend upon rexml)
+  spec.add_runtime_dependency "rexml", ">= 3.3.9"
 
   spec.add_development_dependency "rake",      "~> 12.0"
   spec.add_development_dependency "rspec",     "~> 3.0"
