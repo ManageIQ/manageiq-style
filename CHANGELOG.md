@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.5.4] - 2025-03-13
+### Changed
+- Enforce a minimum version for rack for CVEs [[#59](https://github.com/ManageIQ/manageiq-style/pull/59)]
+
 ## [1.5.3] - 2025-01-09
 ### Changed
 - Bump Rexml minimum version for CVE-2024-49761 [[#57](https://github.com/ManageIQ/manageiq-style/pull/57)]
@@ -42,7 +46,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.1] - 2020-06-19
 ## [1.0.0] - 2020-05-19
 
-[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.3...HEAD
+[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.4...HEAD
+[1.5.4]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.3...v1.5.4
 [1.5.3]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.2...v1.5.3
 [1.5.2]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.0...v1.5.1
