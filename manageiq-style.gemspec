@@ -30,7 +30,9 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "rubocop-rails"
 
   spec.add_runtime_dependency "rexml", ">= 3.3.9"  # rubocop depends on rexml. Enforce a minimum for CVE-2024-49761
-  spec.add_runtime_dependency "rack", ">= 3.1.12"  # rubocop-rails depends on rack. Enforce a minimum for CVE-2025-27610
+
+  # rubocop-rails depends on rack. Enforce a minimum of 2.2.13, 3.0.14, or 3.1.12 for CVE-2025-27610
+  spec.add_runtime_dependency "rack", ">= 2.2.13", *("!= 3.0.0".."!= 3.0.9"), "!= 3.0.4.1", "!= 3.0.4.2", "!= 3.0.6.1", "!= 3.0.9.1", *("!= 3.0.10".."!= 3.0.13"), *("!= 3.1.0".."!= 3.1.9"), *("!= 3.1.10".."!= 3.1.11"), "< 4"
 
   spec.add_development_dependency "rake",      "~> 12.0"
   spec.add_development_dependency "rspec",     "~> 3.0"
