@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.5.5] - 2025-03-14
+### Changed
+- Loosen rack dependency down to the 2.2 range, but only to safe versions [[#60](https://github.com/ManageIQ/manageiq-style/pull/60)]
+
 ## [1.5.4] - 2025-03-13
 ### Changed
 - Enforce a minimum version for rack for CVEs [[#59](https://github.com/ManageIQ/manageiq-style/pull/59)]
@@ -46,7 +50,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.1] - 2020-06-19
 ## [1.0.0] - 2020-05-19
 
-[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.4...HEAD
+[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.5...HEAD
+[1.5.5]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.4...v1.5.5
 [1.5.4]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.3...v1.5.4
 [1.5.3]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.2...v1.5.3
 [1.5.2]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.1...v1.5.2
