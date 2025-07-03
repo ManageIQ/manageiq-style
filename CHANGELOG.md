@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.5.6] - 2025-07-03
+### Changed
+- Lockdown rubocop-ast to the last version before the deprecation warnings [[#62](https://github.com/ManageIQ/manageiq-style/pull/62)]
+- Revert rack individual exclusion in favor of a simple minimum [[#61](https://github.com/ManageIQ/manageiq-style/pull/61)]
+
 ## [1.5.5] - 2025-03-14
 ### Changed
 - Loosen rack dependency down to the 2.2 range, but only to safe versions [[#60](https://github.com/ManageIQ/manageiq-style/pull/60)]
@@ -50,7 +55,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.1] - 2020-06-19
 ## [1.0.0] - 2020-05-19
 
-[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.5...HEAD
+[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.6...HEAD
+[1.5.6]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.5...v1.5.6
 [1.5.5]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.4...v1.5.5
 [1.5.4]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.3...v1.5.4
 [1.5.3]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.2...v1.5.3
