@@ -31,8 +31,12 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "rexml", ">= 3.3.9"  # rubocop depends on rexml. Enforce a minimum for CVE-2024-49761
 
-  # rubocop-rails depends on rack. Enforce a minimum of 2.2.13, 3.0.14, or 3.1.12 for CVE-2025-27610
-  spec.add_runtime_dependency "rack", ">= 2.2.13", *("!= 3.0.0".."!= 3.0.9"), "!= 3.0.4.1", "!= 3.0.4.2", "!= 3.0.6.1", "!= 3.0.9.1", *("!= 3.0.10".."!= 3.0.13"), *("!= 3.1.0".."!= 3.1.9"), *("!= 3.1.10".."!= 3.1.11"), "< 4"
+  # rubocop-rails depends on rack. Enforce a minimum of 2.2.17, 3.0.18, or 3.1.16 for various CVEs
+  #
+  # NOTE: Previously we locked down to exclude many specific versions, but due to
+  # https://github.com/rubygems/rubygems.org/issues/5541 we can't release the gem.
+  # For now, we just lock down to at least the minimum rack.
+  spec.add_runtime_dependency "rack", ">= 2.2.17", "< 4"
 
   spec.add_development_dependency "rake",      "~> 12.0"
   spec.add_development_dependency "rspec",     "~> 3.0"
