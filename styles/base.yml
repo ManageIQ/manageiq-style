@@ -241,8 +241,6 @@ Style/MethodCallWithArgsParentheses:
     - deprecate_attribute
     - drop_trigger
     - encrypt_column
-    - include_concern
-    - require_nested
     - signal
     - supports
     - supports_not
