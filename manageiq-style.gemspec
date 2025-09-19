@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "rubocop-performance"
   spec.add_runtime_dependency "rubocop-rails"
 
-  spec.add_runtime_dependency "rexml", ">= 3.3.9"  # rubocop depends on rexml. Enforce a minimum for CVE-2024-49761
+  spec.add_runtime_dependency "rexml", ">= 3.4.4"  # rubocop depends on rexml. Enforce a minimum for CVE-2025-58767
 
   # rubocop-rails depends on rack. Enforce a minimum of 2.2.17, 3.0.18, or 3.1.16 for various CVEs
   #
