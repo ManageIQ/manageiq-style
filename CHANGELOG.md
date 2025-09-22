@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.5.7] - 2025-09-22
+### Changed
+- Bump minimum for rexml for CVE-2025-58767 [[#65](https://github.com/ManageIQ/manageiq-style/pull/65)]
+- Drop require_nested and include_concern [[#63](https://github.com/ManageIQ/manageiq-style/pull/63)]
+
 ## [1.5.6] - 2025-07-03
 ### Changed
 - Lockdown rubocop-ast to the last version before the deprecation warnings [[#62](https://github.com/ManageIQ/manageiq-style/pull/62)]
@@ -55,7 +60,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.1] - 2020-06-19
 ## [1.0.0] - 2020-05-19
 
-[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.6...HEAD
+[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.7...HEAD
+[1.5.7]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.6...v1.5.7
 [1.5.6]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.5...v1.5.6
 [1.5.5]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.4...v1.5.5
 [1.5.4]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.3...v1.5.4
