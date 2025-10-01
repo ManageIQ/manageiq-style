@@ -1,8 +1,15 @@
 # Change Log
+
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [1.5.8] - 2025-10-02
+
+### Changed
+
+- Bump minimum version for rack for CVE-2025-59830 [[#66](https://github.com/ManageIQ/manageiq-style/pull/66)]
 
 ## [1.5.7] - 2025-09-22
 ### Changed
@@ -60,7 +67,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.1] - 2020-06-19
 ## [1.0.0] - 2020-05-19
 
-[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.7...HEAD
+[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.8...HEAD
+[1.5.8]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.7...v1.5.8
 [1.5.7]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.6...v1.5.7
 [1.5.6]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.5...v1.5.6
 [1.5.5]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.4...v1.5.5
