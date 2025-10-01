@@ -5,10 +5,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [1.5.8] - 2025-10-02
-
+## [1.5.8] - 2025-10-01
 ### Changed
-
 - Bump minimum version for rack for CVE-2025-59830 [[#66](https://github.com/ManageIQ/manageiq-style/pull/66)]
 
 ## [1.5.7] - 2025-09-22
