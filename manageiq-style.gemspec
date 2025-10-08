@@ -37,7 +37,7 @@ Gem::Specification.new do |spec|
   # NOTE: Previously we locked down to exclude many specific versions, but due to
   # https://github.com/rubygems/rubygems.org/issues/5541 we can't release the gem.
   # For now, we just lock down to at least the minimum rack.
-  spec.add_runtime_dependency "rack", ">= 2.2.18", "< 4" # CVE-2025-59830 https://github.com/advisories/GHSA-625h-95r8-8xpm
+  spec.add_runtime_dependency "rack", ">= 2.2.19", "< 4" # CVE-2025-61772 https://github.com/rack/rack/security/advisories/GHSA-wpv5-97wm-hp9c
 
   spec.add_development_dependency "rake",      "~> 12.0"
   spec.add_development_dependency "rspec",     "~> 3.0"
