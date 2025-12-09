@@ -2,8 +2,6 @@
 
 [![Gem Version](https://badge.fury.io/rb/manageiq-style.svg)](http://badge.fury.io/rb/manageiq-style)
 [![CI](https://github.com/ManageIQ/manageiq-style/actions/workflows/ci.yaml/badge.svg)](https://github.com/ManageIQ/manageiq-style/actions/workflows/ci.yaml)
-[![Code Climate](https://codeclimate.com/github/ManageIQ/manageiq-style.svg)](https://codeclimate.com/github/ManageIQ/manageiq-style)
-[![Test Coverage](https://codeclimate.com/github/ManageIQ/manageiq-style/badges/coverage.svg)](https://codeclimate.com/github/ManageIQ/manageiq-style/coverage)
 
 Style and linting configuration for ManageIQ projects.
 
