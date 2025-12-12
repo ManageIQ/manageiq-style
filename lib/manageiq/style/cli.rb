@@ -31,12 +31,8 @@ module ManageIQ
         require 'yaml'
         require 'more_core_extensions/all'
 
-        check_for_codeclimate_channel
-
         update_rubocop_yml
-        write_rubocop_cc_yml
         ensure_rubocop_local_yml_exists
-        update_codeclimate_yml
         ensure_haml_lint_yml
         update_yamllint
 
@@ -45,31 +41,6 @@ module ManageIQ
       end
 
       private
-
-      def check_for_codeclimate_channel
-        require 'open-uri'
-        uri = URI.parse("https://raw.githubusercontent.com/codeclimate/codeclimate-rubocop/channel/#{cc_rubocop_channel}/Gemfile")
-        uri.open
-      rescue OpenURI::HTTPError
-        STDERR.puts "RuboCop version #{rubocop_version.version} is not supported by CodeClimate."
-        STDERR.puts
-        STDERR.puts "Accepted versions are:"
-        fetch_all_codeclimate_channels.each_slice(10) do |versions|
-          STDERR.puts "    #{versions.join(", ")}"
-        end
-        exit 1
-      end
-
-      def fetch_all_codeclimate_channels
-        `git ls-remote --heads https://github.com/codeclimate/codeclimate-rubocop 'channel/rubocop-*' 2>/dev/null`
-          .lines
-          .flat_map { |l| l.match(/rubocop-(.+)$/).captures }
-          .map { |v| v.split("-").join(".") }
-          .reject { |v| v == "1.70" } # This is not a real version, but the branch exists :shrug:
-          .sort_by { |v| v.split(".").map(&:to_i) }
-      rescue
-        []
-      end
 
       def update_rubocop_yml(file = ".rubocop.yml")
         data = begin
@@ -84,59 +55,8 @@ module ManageIQ
         File.write(file, data.to_yaml.sub("---\n", ""))
       end
 
-      def write_rubocop_cc_yml(file = ".rubocop_cc.yml")
-        data = {
-          "inherit_from" => [
-            ".rubocop_base.yml",
-            ".rubocop_cc_base.yml",
-            ".rubocop_local.yml"
-          ]
-        }
-
-        File.write(file, data.to_yaml.sub("---\n", ""))
-      end
-
       def ensure_rubocop_local_yml_exists(file = ".rubocop_local.yml")
         FileUtils.touch(file)
-      end
-
-      def update_codeclimate_yml(file = ".codeclimate.yml")
-        data = begin
-          YAML.load_file(file)
-        rescue Errno::ENOENT
-          {}
-        end
-
-        data["prepare"] = {
-          "fetch" => [
-            {"url" => "https://raw.githubusercontent.com/ManageIQ/manageiq-style/master/.rubocop_base.yml",    "path" => ".rubocop_base.yml"},
-            {"url" => "https://raw.githubusercontent.com/ManageIQ/manageiq-style/master/.rubocop_cc_base.yml", "path" => ".rubocop_cc_base.yml"},
-            {"url" => "https://raw.githubusercontent.com/ManageIQ/manageiq-style/master/styles/base.yml",      "path" => "styles/base.yml"},
-            {"url" => "https://raw.githubusercontent.com/ManageIQ/manageiq-style/master/styles/cc_base.yml",   "path" => "styles/cc_base.yml"},
-          ]
-        }
-
-        data.delete_path("engines", "rubocop")
-
-        data["plugins"] ||= {}
-        data["plugins"]["rubocop"] = {
-          "enabled" => true,
-          "config"  => ".rubocop_cc.yml",
-          "channel" => cc_rubocop_channel,
-        }
-        data["engines"]&.each do |engine, config|
-          data["plugins"][engine] = config
-        end
-
-        data.delete("engines") # moved to plugins
-        data.delete("ratings") # deprecated
-
-        exclude_paths = data.delete("exclude_paths") # renamed
-        data["exclude_patterns"] = exclude_paths if exclude_paths
-
-        data["version"] ||= "2"
-
-        File.write(file, data.to_yaml.sub("---\n", ""))
       end
 
       def ensure_haml_lint_yml(file = ".haml-lint.yml")
@@ -270,13 +190,7 @@ module ManageIQ
         return unless File.directory?(plugin_dir)
 
         update_rubocop_yml(File.join(plugin_dir, ".rubocop.yml"))
-        write_rubocop_cc_yml(File.join(plugin_dir, ".rubocop_cc.yml"))
         ensure_rubocop_local_yml_exists(File.join(plugin_dir, ".rubocop_local.yml"))
-        update_codeclimate_yml(File.join(plugin_dir, ".codeclimate.yml"))
-      end
-
-      def cc_rubocop_channel
-        @cc_rubocop_channel ||= "rubocop-#{rubocop_version.segments[0]}-#{rubocop_version.segments[1]}-#{rubocop_version.segments[2]}"
       end
 
       def rubocop_version
