@@ -23,7 +23,7 @@ Or install it yourself as:
 
 ## Usage
 
-In the root of the repo that needs configuring, run `bundle exec manageiq-style -i` to install or update the rubocop and codeclimate configuration files.
+In the root of the repo that needs configuring, run `bundle exec manageiq-style -i` to install or update the rubocop configuration files.
 
 ## Development
 
