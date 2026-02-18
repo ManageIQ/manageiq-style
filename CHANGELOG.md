@@ -5,9 +5,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.5.10] - 2026-02-18
+### Changed
+- Bump minimum version for rack to 2.2.22 for various CVEs [[#69](https://github.com/ManageIQ/manageiq-style/pull/69)], [[#74](https://github.com/ManageIQ/manageiq-style/pull/74)]
+- Add more allowed methods to Style/MethodCallWithArgsParentheses [[#73](https://github.com/ManageIQ/manageiq-style/pull/73)]
+
 ## [1.5.9] - 2025-10-08
 ### Changed
-- Upgrade to rack 2.2.19 for CVE-2025-61772 [[#67](https://github.com/ManageIQ/manageiq-style/pull/67)]
+- Bump minimum version for rack to 2.2.19 for CVE-2025-61772 [[#67](https://github.com/ManageIQ/manageiq-style/pull/67)]
 
 ## [1.5.8] - 2025-10-01
 ### Changed
@@ -69,7 +74,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.1] - 2020-06-19
 ## [1.0.0] - 2020-05-19
 
-[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.9...HEAD
+[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.10...HEAD
+[1.5.10]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.9...v1.5.10
 [1.5.9]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.8...v1.5.9
 [1.5.8]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.7...v1.5.8
 [1.5.7]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.6...v1.5.7
