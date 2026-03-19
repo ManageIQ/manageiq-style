@@ -26,12 +26,9 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "more_core_extensions"
   spec.add_dependency "optimist"
-  spec.add_dependency "rubocop", "= 1.56.3"
-  spec.add_dependency "rubocop-ast", "~> 1.40.0"
+  spec.add_dependency "rubocop", "~> 1.85"
   spec.add_dependency "rubocop-performance"
   spec.add_dependency "rubocop-rails"
-
-  spec.add_dependency "rexml", ">= 3.4.4" # rubocop depends on rexml. Enforce a minimum for CVE-2025-58767
 
   # rubocop-rails depends on rack. Enforce a minimum for various CVEs
   #
