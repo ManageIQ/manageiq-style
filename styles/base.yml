@@ -235,6 +235,9 @@ Style/MethodCallWithArgsParentheses:
     - banner
     - die
     - opt
+    - synopsis
+    - usage
+    - version
     # MIQ
     - add_trigger
     - alias_with_relationship_type
