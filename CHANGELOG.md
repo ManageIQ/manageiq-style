@@ -5,6 +5,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.6.0] - 2026-03-20
+### Changed
+- Bump rubocop to 1.85 [[#76](https://github.com/ManageIQ/manageiq-style/pull/76)]
+- Bump TargetRubyVersion to 3.3 [[#76](https://github.com/ManageIQ/manageiq-style/pull/76)]
+- Update .rubocop_base.yml after upgrade of rubocop [[#76](https://github.com/ManageIQ/manageiq-style/pull/76)]
+- Add Ruby 3.3, 3.4, and 4.0 [[#77](https://github.com/ManageIQ/manageiq-style/pull/77)]
+
 ## [1.5.10] - 2026-02-18
 ### Changed
 - Bump minimum version for rack to 2.2.22 for various CVEs [[#69](https://github.com/ManageIQ/manageiq-style/pull/69)], [[#74](https://github.com/ManageIQ/manageiq-style/pull/74)]
@@ -74,7 +81,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.1] - 2020-06-19
 ## [1.0.0] - 2020-05-19
 
-[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.10...HEAD
+[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.6.0...HEAD
+[1.6.0]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.10...v1.6.0
 [1.5.10]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.9...v1.5.10
 [1.5.9]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.8...v1.5.9
 [1.5.8]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.7...v1.5.8
