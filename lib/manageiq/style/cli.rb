@@ -141,7 +141,7 @@ module ManageIQ
           group_index += 1
           group_end = group_index
           group_end += 1 until lines[group_end].strip == "end"
-          group_range = (group_index..group_end - 1)
+          group_range = (group_index...group_end)
 
           # Split lines into "gem" units including their preceding comments or blank lines
           gem_units = lines[group_range].slice_after { |l| l.match?(/^\s*gem/) }.to_a

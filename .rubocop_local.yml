@@ -1,1 +1,3 @@
-
+Naming/FileName:
+  Exclude:
+  - lib/manageiq-style.rb
