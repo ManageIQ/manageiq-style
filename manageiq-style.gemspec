@@ -39,7 +39,7 @@ Gem::Specification.new do |spec|
   # For now, we just lock down to at least the minimum rack.
   spec.add_runtime_dependency "rack", ">= 2.2.22", "< 4" # CVE-2026-25500 https://github.com/advisories/GHSA-whrj-4476-wvmp
 
-  spec.add_development_dependency "rake",      "~> 12.0"
+  spec.add_development_dependency "rake",      "~> 13.3"
   spec.add_development_dependency "rspec",     "~> 3.0"
   spec.add_development_dependency "simplecov", ">= 0.21.2"
 end
