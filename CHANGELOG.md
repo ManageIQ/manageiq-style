@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.6.1] - 2026-04-03
+### Changed
+- Bump rack for numerous CVEs [[#78](https://github.com/ManageIQ/manageiq-style/pull/78)]
+
 ## [1.6.0] - 2026-03-20
 ### Changed
 - Bump rubocop to 1.85 [[#76](https://github.com/ManageIQ/manageiq-style/pull/76)]
@@ -81,7 +85,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.1] - 2020-06-19
 ## [1.0.0] - 2020-05-19
 
-[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.6.1...HEAD
+[1.6.1]: https://github.com/ManageIQ/manageiq-style/compare/v1.6.0...v1.6.1
 [1.6.0]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.10...v1.6.0
 [1.5.10]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.9...v1.5.10
 [1.5.9]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.8...v1.5.9
