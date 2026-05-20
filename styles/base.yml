@@ -21,8 +21,6 @@ Layout/ExtraSpacing:
     - Gemfile
 Layout/LineLength:
   Enabled: false
-Layout/SpaceBeforeFirstArg:
-  Enabled: false
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 Metrics:
@@ -48,12 +46,9 @@ Style/ClassAndModuleChildren:
 Style/ClassCheck:
   EnforcedStyle: kind_of?
 Style/CollectionMethods:
-  # Enabled: true
+  Enabled: true
   PreferredMethods:
     find: detect
-    find_all: select
-    map: collect
-    reduce: inject
 Style/Documentation:
   Enabled: false
 Style/DoubleNegation:
@@ -68,23 +63,18 @@ Style/FormatStringToken:
   EnforcedStyle: template
 Style/FrozenStringLiteralComment:
   Enabled: false
-Style/GuardClause:
-  Enabled: false
 Style/HashSyntax:
   EnforcedStyle: hash_rockets
   Exclude:
     - db/schema.rb
-Style/IfUnlessModifier:
-  Enabled: false
 Style/MethodCallWithArgsParentheses:
+  Enabled: true
   Exclude:
     - Gemfile
     - config/routes.rb
     - lib/generators/**/*
-    - lib/resource_feeder/**/*
     - lib/tasks/**/*
     - spec/**/*
-  Enabled: true
   AllowedMethods:
     # Ruby
     - add_dependency
@@ -222,13 +212,7 @@ Style/MethodCallWithArgsParentheses:
     # Rake
     - desc
     - task
-Style/NegatedIf:
-  Enabled: false
-Style/NegatedIfElseCondition:
-  Enabled: false
 Style/NumericPredicate:
-  Enabled: false
-Style/ParallelAssignment:
   Enabled: false
 Style/PerlBackrefs:
   Enabled: false
@@ -238,15 +222,13 @@ Style/RedundantReturn:
   AllowMultipleReturnValues: true
 Style/RegexpLiteral:
   Enabled: false
-Style/RescueStandardError:
-  EnforcedStyle: implicit
 Style/SingleLineMethods:
   AllowIfMethodIsEmpty: false
+Style/SpecialGlobalVars:
+  EnforcedStyle: use_builtin_english_names
 Style/StringLiterals:
   Enabled: false # Also see Style/QuotedSymbols
 Style/StringLiteralsInInterpolation:
-  Enabled: false
-Style/SymbolArray:
   Enabled: false
 Style/TrailingCommaInArrayLiteral:
   Enabled: false
@@ -255,6 +237,4 @@ Style/TrailingCommaInHashLiteral:
 Style/TrailingUnderscoreVariable:
   Enabled: false
 Style/WhileUntilModifier:
-  Enabled: false
-Style/WordArray:
   Enabled: false
