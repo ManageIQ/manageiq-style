@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "more_core_extensions"
   spec.add_dependency "optimist"
-  spec.add_dependency "rubocop", "~> 1.85"
+  spec.add_dependency "rubocop", "~> 1.88", ">= 1.88.2"
   spec.add_dependency "rubocop-performance"
   spec.add_dependency "rubocop-rails"
 
