@@ -5,6 +5,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.7.0] - 2026-05-20
+### Changed
+- Bump rubocop to minimum 1.88.2 for numerous CVEs in transitive dependency [[#82](https://github.com/ManageIQ/manageiq-style/pull/82)]
+- Various style updates [[#79](https://github.com/ManageIQ/manageiq-style/pull/79)]
+  - Enable `Style/CollectionMethods` with preferred methods `find: detect`
+  - Enable `Style/MethodCallWithArgsParentheses`
+  - Enable `Style/SpecialGlobalVars` with `use_builtin_english_names`
+  - Remove disabled cops: `Style/GuardClause`, `Style/IfUnlessModifier`, `Style/NegatedIf`, `Style/NegatedIfElseCondition`, `Style/ParallelAssignment`, `Style/RescueStandardError`, `Style/SymbolArray`, `Style/WordArray`, `Layout/SpaceBeforeFirstArg`
+
 ## [1.6.1] - 2026-04-03
 ### Changed
 - Bump rack for numerous CVEs [[#78](https://github.com/ManageIQ/manageiq-style/pull/78)]
@@ -85,7 +94,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.1] - 2020-06-19
 ## [1.0.0] - 2020-05-19
 
-[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.6.1...HEAD
+[Unreleased]: https://github.com/ManageIQ/manageiq-style/compare/v1.7.0...HEAD
+[1.7.0]: https://github.com/ManageIQ/manageiq-style/compare/v1.6.1...v1.7.0
 [1.6.1]: https://github.com/ManageIQ/manageiq-style/compare/v1.6.0...v1.6.1
 [1.6.0]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.10...v1.6.0
 [1.5.10]: https://github.com/ManageIQ/manageiq-style/compare/v1.5.9...v1.5.10
